@@ -12,7 +12,7 @@ const AuditTrail = ({ fileId }) => {
     const fetchAuditTrail = async () => {
       try {
         const token = localStorage.getItem('token');
-        const res = await fetch(`http://localhost:5000/api/audit/${fileId}`, {
+        const res = await fetch(`https://docu-sign-clone.onrender.com/api/audit/${fileId}`, {
           headers: { 'Authorization': `Bearer ${token}` }
         });
         if (!res.ok) throw new Error('Failed to fetch audit trail');

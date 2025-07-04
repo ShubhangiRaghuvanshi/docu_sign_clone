@@ -20,7 +20,7 @@ const SignatureStatus = ({ fileId, refreshTrigger }) => {
     setError(null);
     try {
       const token = localStorage.getItem('token');
-      const res = await fetch(`http://localhost:5000/api/signatures/${fileId}/status`, {
+      const res = await fetch(`https://docu-sign-clone.onrender.com/api/signatures/${fileId}/status`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       if (!res.ok) throw new Error('Failed to fetch signature status');
@@ -36,7 +36,7 @@ const SignatureStatus = ({ fileId, refreshTrigger }) => {
   const handleAcceptSignature = async (signatureId) => {
     try {
       const token = localStorage.getItem('token');
-      const res = await fetch(`http://localhost:5000/api/signatures/${signatureId}/accept`, {
+      const res = await fetch(`https://docu-sign-clone.onrender.com/api/signatures/${signatureId}/accept`, {
         method: 'PUT',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -59,7 +59,7 @@ const SignatureStatus = ({ fileId, refreshTrigger }) => {
 
     try {
       const token = localStorage.getItem('token');
-      const res = await fetch(`http://localhost:5000/api/signatures/${selectedSignature._id}/reject`, {
+      const res = await fetch(`https://docu-sign-clone.onrender.com/api/signatures/${selectedSignature._id}/reject`, {
         method: 'PUT',
         headers: {
           'Authorization': `Bearer ${token}`,
