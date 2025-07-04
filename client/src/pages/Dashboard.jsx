@@ -27,7 +27,7 @@ const Dashboard = () => {
     setError(null);
     try {
       const token = localStorage.getItem('token');
-      const res = await fetch('http://localhost:5000/api/docs', {
+      const res = await fetch('https://docu-sign-clone.onrender.com/api/docs', {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -60,7 +60,7 @@ const Dashboard = () => {
     setSignedFileUrl(null);
     try {
       const token = localStorage.getItem('token');
-      const res = await fetch('http://localhost:5000/api/signatures/finalize', {
+      const res = await fetch('https://docu-sign-clone.onrender.com/api/signatures/finalize', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -70,7 +70,7 @@ const Dashboard = () => {
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.message || 'Failed to finalize PDF');
-      setSignedFileUrl(`http://localhost:5000/${data.signedFile}`);
+      setSignedFileUrl(`https://docu-sign-clone.onrender.com/${data.signedFile}`);
     } catch (err) {
       alert('Failed to finalize PDF: ' + err.message);
     }
@@ -82,7 +82,7 @@ const Dashboard = () => {
     setInviteResult(null);
     try {
       const token = localStorage.getItem('token');
-      const res = await fetch('http://localhost:5000/api/signatures/invite', {
+      const res = await fetch('https://docu-sign-clone.onrender.com/api/signatures/invite', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,

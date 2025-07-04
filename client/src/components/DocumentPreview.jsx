@@ -26,7 +26,7 @@ const DocumentPreview = ({ fileUrl, fileId, onSignaturesUpdate }) => {
     if (!fileId) return;
     try {
       const token = localStorage.getItem('token');
-      const res = await fetch(`http://localhost:5000/api/signatures/${fileId}`, {
+      const res = await fetch(`https://docu-sign-clone.onrender.com/api/signatures/${fileId}`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       if (!res.ok) throw new Error('Failed to fetch signatures');
@@ -88,7 +88,7 @@ const DocumentPreview = ({ fileUrl, fileId, onSignaturesUpdate }) => {
     // POST to backend
     try {
       const token = localStorage.getItem('token');
-      const res = await fetch('http://localhost:5000/api/signatures', {
+      const res = await fetch('https://docu-sign-clone.onrender.com/api/signatures', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -125,7 +125,7 @@ const DocumentPreview = ({ fileUrl, fileId, onSignaturesUpdate }) => {
     // Upload to backend
     try {
       const token = localStorage.getItem('token');
-      const res = await fetch(`http://localhost:5000/api/signatures/${activeSignature.sig._id}/image`, {
+      const res = await fetch(`https://docu-sign-clone.onrender.com/api/signatures/${activeSignature.sig._id}/image`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -157,7 +157,7 @@ const DocumentPreview = ({ fileUrl, fileId, onSignaturesUpdate }) => {
   let normalizedFileUrl = fileUrl.replace(/\\/g, '/');
   // Ensure the fileUrl is absolute
   if (!/^https?:\/\//.test(normalizedFileUrl)) {
-    normalizedFileUrl = `http://localhost:5000/${normalizedFileUrl.replace(/^\/+/, '')}`;
+    normalizedFileUrl = `https://docu-sign-clone.onrender.com/${normalizedFileUrl.replace(/^\/+/, '')}`;
   }
 
   return (
@@ -201,7 +201,7 @@ const DocumentPreview = ({ fileUrl, fileId, onSignaturesUpdate }) => {
                     // Upload to backend
                     try {
                       const token = localStorage.getItem('token');
-                      const res = await fetch(`http://localhost:5000/api/signatures/${activeSignature.sig._id}/image`, {
+                      const res = await fetch(`https://docu-sign-clone.onrender.com/api/signatures/${activeSignature.sig._id}/image`, {
                         method: 'POST',
                         headers: {
                           'Authorization': `Bearer ${token}`,
